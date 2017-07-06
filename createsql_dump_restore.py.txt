@@ -25,9 +25,9 @@ print "-- database dump process started --"+ time +" --"
 for table in tables:
 
     print "Dumping table "+table+" -- "+time+" --"
-    query="mysqldump -h"+hostname+" -u "+user1 + " -p"+pass1+" --quick --add-drop-table  "+ datadump+" "+ table +" > "+dumpadd+filename+table+".sql"
-    os.system("pwd")
-    os.system(query)
+    export="mysqldump -h"+hostname+" -u "+user1 + " -p"+pass1+" --quick --add-drop-table  "+ datadump+" "+ table +" > "+dumpadd+filename+table+".sql"
+    #os.system("pwd")
+    os.system(export)
 
 #Dump created
 print "Dump created "+time
@@ -39,9 +39,9 @@ print "-- Importing tables --"
 
 for table in tables:
     print "Sourcing table "+table+" -- "+time+" --"
-    fill="mysql -h "+hostname+" -u " +user1 +" -p"+pass1+ " -f -D "+datastore+" < "+dumpadd+filename+table+".sql"
+    import="mysql -h "+hostname+" -u " +user1 +" -p"+pass1+ " -f -D "+datastore+" < "+dumpadd+filename+table+".sql"
     
-    os.system(fill)
+    os.system(import)
 
 print "Import completed"
 
